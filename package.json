@@ -1,0 +1,11 @@
+{
+  "name": "lampak",
+  "version": "1.0.0",
+  "description": "internet landing page",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Annenkov Alexander",
+  "license": "UNLICENSED"
+}
