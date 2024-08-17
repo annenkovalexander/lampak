@@ -1,0 +1,23 @@
+:root.theme-dark {
+    --background-color: var(--background-color-dark);
+    --color: var(--color-dark);
+}
+
+:root.theme-light {
+    --background-color: var(--background-color-light);
+    --color: var(--color-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: var(--background-color-dark);
+        --color: var(--color-dark);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: var(--background-color-light);
+        --color: var(--color-light);
+    }
+}
