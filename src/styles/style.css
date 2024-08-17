@@ -1,0 +1,47 @@
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-color);
+    color: var(--color);
+    container-type: inline-size;
+    background-attachment: fixed;
+    min-height: 100vh;
+    z-index: 0;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    color: inherit;
+    mix-blend-mode: difference;
+    z-index: 2;
+}
+
+.main__list {
+    width: 100%;
+}
+
+.main__list-item {
+    width: 100%;
+}
+
+
+@container (inline-size <= 375px) {
+    .main {
+        width: 100vw;
+    }
+}
+
+@container (inline-size > 375px) {
+    .main {
+        max-width: 375px;
+    }
+}
+
+.main__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
