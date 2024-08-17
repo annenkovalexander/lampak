@@ -12,20 +12,36 @@
 }
 
 .header {
-    position: sticky;
-    top: 0;
     color: inherit;
     mix-blend-mode: difference;
     z-index: 2;
 }
 
+.header a {
+    text-decoration: none;
+}
+
+.header a:focus {
+    outline: none;
+}
+
 .main__list {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
 .main__list-item {
-    width: 100%;
+    display: flex;
+    gap: 20px;
 }
+
+.main__list-item-image {
+    max-width: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
 
 
 @container (inline-size <= 375px) {
