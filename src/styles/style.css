@@ -75,7 +75,45 @@
     object-position: center;
 }
 
+.dialog {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+}
 
+.dialog__image {
+    max-width: 80%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.dialog__button {
+    background-color: transparent;
+    color: var(--color);
+    border: 1px solid var(--color);
+}
+
+.dialog__button:focus {
+    outline: none;
+}
+
+.dialog__image-wrapper {
+    display: flex;
+    gap: 20px;
+    color: var(--color);
+    align-items: center;
+    overflow: hidden;
+}
+
+.dialog__navigation_buttons {
+    background-color: transparent;
+    border: none;
+    min-width: 10px;
+}
+
+.dialog__navigation_buttons:focus {
+    outline: none;
+}
 
 @container (inline-size <= 375px) {
     .main {
