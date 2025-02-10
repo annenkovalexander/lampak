@@ -37,6 +37,8 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   deploy:  # Создаётся одна задача deploy, имя может быть любым
+    environment:
+      name: github-pages
     runs-on: ubuntu-latest
     permissions:
       contents: write
