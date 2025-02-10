@@ -1,3 +1,1 @@
-# lampak.ru
-__Work. Pet project__
-
+# LAMPAK -- твой проводник в мир удобной упаковки
