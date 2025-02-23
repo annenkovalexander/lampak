@@ -1,0 +1,25 @@
+export type TCardItem = {
+  id: string;
+  productName: string;
+  mainPicture: string;
+  productPrice: number;
+  addToFavouritesFlag: boolean;
+};
+
+export type TCardFullItem = TCardItem & {
+  description: string;
+  picturesList: string[];
+};
+
+export type TCompanyContactData = {
+  companyEmail: string;
+  companyPhone: string;
+  companyTelegram: string;
+  companyLogoUrl: string;
+};
+
+export type THeaderData = {
+  theme: boolean;
+  search: boolean;
+  favourites: boolean;
+};

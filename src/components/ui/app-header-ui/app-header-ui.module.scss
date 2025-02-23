@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px black solid;
+}
+
+.menuButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.companyLogo {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+.button {
+    background-color: transparent;
+    border: none;
+}
+
+.svgIcon {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    background-color: transparent;
+}

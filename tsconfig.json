@@ -18,6 +18,6 @@
       "types": ["node", "jest", "cypress"],
       "baseUrl": ".",
     },
-    "include": ["src", "**/*.ts", "**/*.d.ts", "**/*.tsx"]
+    "include": ["src/**/*", "**/*.ts", "**/*.d.ts", "**/*.tsx"]
   }
   

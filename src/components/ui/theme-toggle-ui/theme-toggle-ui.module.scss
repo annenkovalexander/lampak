@@ -1,0 +1,22 @@
+.container {
+    margin: 10px;
+}
+
+.radioGroup {
+    appearance: none;
+}
+
+.radioButton {
+    appearance: none;
+}
+
+.radioButton:checked {
+    border-color: #2196F3;
+    background-color: #2196F3;
+}
+
+.activeLink {
+    color: gray;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}

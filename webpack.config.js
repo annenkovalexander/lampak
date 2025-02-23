@@ -8,6 +8,35 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        use: [{
+          loader: 'html-loader',
+          options: {
+            sources: {
+              list: [
+                '...',
+                {
+                  tag: 'script',
+                  attribute: 'src',
+                  type: 'src',
+                  filter: (tag) => {
+                    // tag is a string path, not an HTML element
+                    return tag.endsWith('.js');
+                  }
+                }
+              ]
+            }
+          }
+        }],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name][ext]',
+        },
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
@@ -25,6 +54,19 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass"),
+            },
+          },
+        ],
+      },
+      {
         test: /\.module\.css$/i,
         exclude: /node_modules/,
         use: [
@@ -38,7 +80,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpg|jpeg|png|svg)$/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource'
       },
       {
@@ -73,7 +115,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   devServer: {
     static: path.join(__dirname, './dist'),
