@@ -1,57 +1,30 @@
 import { SyntheticEvent } from 'react';
 import styles from './theme-toggle-ui.module.scss';
 import clsx from 'clsx';
+import MoonPictogram from '../../../content/images/buttons/Moon.svg';
+import SunPictogram from '../../../content/images/buttons/Sun.svg';
 
 type TThemeToggleUIProps = {
   theme: boolean;
-  clickHandler: (e: SyntheticEvent<HTMLInputElement>) => void;
+  clickHandler: (e: SyntheticEvent<HTMLOrSVGElement>) => void;
 };
 
 export const ThemeToggleUI = (props: TThemeToggleUIProps) => (
-  <div className={styles.container}>
-    <div className={styles.radioGroup}>
-      <input
-        type='radio'
-        className={styles.radioButton}
-        id='dark'
-        name='dark'
-        value='dark'
-        required
-        checked={props.theme ? true : false}
-        onChange={props.clickHandler}
-      />
-      <label
-        htmlFor='dark'
-        className={
-          props.theme
-            ? clsx([styles.radioButtonLabel, styles.activeLink])
-            : styles.radioButtonLabel
-        }
-      >
-        Темная
-      </label>
-    </div>
-    <div className={styles.radioGroup}>
-      <input
-        type='radio'
-        className={styles.radioButton}
-        id='light'
-        name='light'
-        value='light'
-        required
-        checked={props.theme ? false : true}
-        onChange={props.clickHandler}
-      />
-      <label
-        htmlFor='light'
-        className={
-          !props.theme
-            ? clsx([styles.radioButtonLabel, styles.activeLink])
-            : styles.radioButtonLabel
-        }
-      >
-        Светлая
-      </label>
-    </div>
+  <div>
+    {props.theme ? (
+      <>
+        <MoonPictogram
+          onClick={props.clickHandler}
+          className={styles.darkPictogram}
+        />
+      </>
+    ) : (
+      <>
+        <SunPictogram
+          onClick={props.clickHandler}
+          className={styles.lightPictogram}
+        />
+      </>
+    )}
   </div>
 );

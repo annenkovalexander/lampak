@@ -3,8 +3,8 @@ import styles from './app-header-ui.module.scss';
 import companyLogo from '../../../content/images/favicon.png';
 import { clsx } from 'clsx';
 import { ThemeToggle } from '../../../../src/components/theme-toggle/theme-toggle';
-import searchIcon from '../../../content/images/buttons/Search Alt Icon.svg';
-import favouritesIcon from '../../../content/images/buttons/Galaxy Vector.svg';
+import SearchPictogram from '../../../content/images/buttons/Search.svg';
+import FavouritesPictogram from '../../../content/images/buttons/Galaxy.svg';
 
 type TAppHeaderUIProps = {
   headerData: THeaderData;
@@ -14,12 +14,21 @@ type TAppHeaderUIProps = {
 };
 
 export const AppHeaderUI = (props: TAppHeaderUIProps) => (
-  <div className={styles.container}>
-    <h2 onClick={props.goToMainPage}>Lampak</h2>
+  <div
+    className={clsx(
+      props.headerData.theme
+        ? [styles.container, styles.darkTheme]
+        : [styles.container, styles.lightTheme]
+    )}
+  >
+    <h2 className={styles.companyName} onClick={props.goToMainPage}>
+      Lampak
+    </h2>
     <img
       className={styles.companyLogo}
       src={companyLogo}
       alt='Логотип компании'
+      onClick={props.goToMainPage}
     />
     <div className={styles.menuButtons}>
       <button
@@ -27,10 +36,13 @@ export const AppHeaderUI = (props: TAppHeaderUIProps) => (
         className={styles.button}
         onClick={props.goToFavourites}
       >
-        <img
-          className={styles.svgIcon}
-          src={favouritesIcon}
-          alt='Переход на страницу избранного'
+        <FavouritesPictogram
+          className={clsx([
+            styles.icon,
+            props.headerData.theme
+              ? styles.darkPictogram
+              : styles.lightPictogram
+          ])}
         />
       </button>
       <button
@@ -38,10 +50,13 @@ export const AppHeaderUI = (props: TAppHeaderUIProps) => (
         className={styles.button}
         onClick={props.searchButtonHandler}
       >
-        <img
-          className={styles.svgIcon}
-          src={searchIcon}
-          alt='Активаци поисковой'
+        <SearchPictogram
+          className={clsx([
+            styles.icon,
+            props.headerData.theme
+              ? styles.darkPictogram
+              : styles.lightPictogram
+          ])}
         />
       </button>
       <ThemeToggle theme={props.headerData.theme} />

@@ -1,22 +1,24 @@
 import { SyntheticEvent, useState } from 'react';
 import { ThemeToggleUI } from '../ui/theme-toggle-ui/theme-toggle-ui';
+import { useDispatch, useSelector } from '../../../src/services/store';
+import {
+  getTheme,
+  toggleTheme
+} from '../../../src/services/slices/appSettingsSlice';
 
 type TThemeToggleProps = {
   theme: boolean;
 };
 
 export const ThemeToggle = (props: TThemeToggleProps) => {
-  const [theme, setTheme] = useState(props.theme);
-  const handleThemeChange = (e: SyntheticEvent<HTMLInputElement>) => {
-    console.log(
-      'ThemeToggle handleThemeChange event: ',
-      JSON.stringify(e.currentTarget.value)
+  const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
+  const handleThemeChange = (e: SyntheticEvent<HTMLOrSVGElement>) => {
+    dispatch(toggleTheme());
+    document.documentElement.style.setProperty(
+      '--svgColor',
+      theme ? '#ffffff' : '#000000'
     );
-    if (e.currentTarget.value === 'dark') {
-      setTheme(true);
-    } else {
-      setTheme(false);
-    }
   };
 
   return (

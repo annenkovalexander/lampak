@@ -1,11 +1,25 @@
 .container {
     display: flex;
     justify-content: space-between;
-    border-top: black 1px solid;
+    border-top: 1px solid;
+}
+
+.companyContacts {
+    text-align: left;
+    list-style-type: none;
 }
 
 .companyLogo {
     width: 50px;
     height: 50px;
     margin: 10px;
+    cursor: pointer;
+}
+
+.lightTheme {
+    border-color: #000;
+}
+
+.darkTheme {
+    border-color: #fff;
 }

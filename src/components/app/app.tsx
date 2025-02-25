@@ -16,22 +16,29 @@ import { FavouritesPage } from '../../../src/pages/favourites-page/favourites-pa
 
 import styles from './app.module.scss';
 import clsx from 'clsx';
+import { useSelector } from '../../services/store';
+import { getTheme } from '../../../src/services/slices/appSettingsSlice';
+import { SearchInput } from '../search-input/search-input';
 
-const theme = false;
-
-const App = () => (
-  <div
-    className={
-      theme
-        ? clsx([styles.container, styles.darkTheme])
-        : clsx([styles.container, styles.lightTheme])
-    }
-  >
-    <AppHeader />
-    <Outlet />
-    <AppFooter />
-  </div>
-);
+const App = () => {
+  const theme = useSelector(getTheme);
+  return (
+    <div
+      className={
+        theme
+          ? clsx([styles.container, styles.darkTheme])
+          : clsx([styles.container, styles.lightTheme])
+      }
+    >
+      <div className={styles.outletContainer}>
+        <AppHeader />
+        <SearchInput />
+        <Outlet />
+      </div>
+      <AppFooter />
+    </div>
+  );
+};
 
 export default App;
 

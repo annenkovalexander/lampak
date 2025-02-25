@@ -14,7 +14,8 @@ export type TCardFullItem = TCardItem & {
 export type TCompanyContactData = {
   companyEmail: string;
   companyPhone: string;
-  companyTelegram: string;
+  companyTelegramURL: string;
+  companyTelegramURLText: string;
   companyLogoUrl: string;
 };
 

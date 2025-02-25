@@ -8,6 +8,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+      {
         test: /\.html$/i,
         use: [{
           loader: 'html-loader',
@@ -30,7 +34,7 @@ module.exports = {
         }],
       },
       {
-        test: /\.(png|svg|jpg|jpeg)$/i,
+        test: /\.(png|jpg|jpeg)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'assets/[name][ext]',
@@ -54,17 +58,19 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/,
         use: [
-          "style-loader",
-          "css-loader",
+          'style-loader',
           {
-            loader: "sass-loader",
+            loader: 'css-loader',
             options: {
-              implementation: require("sass"),
-            },
+              modules: true,
+              sourceMap: true,
+              importLoaders: 1
+            }
           },
-        ],
+          'sass-loader'
+        ]
       },
       {
         test: /\.module\.css$/i,
@@ -80,7 +86,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif)$/i,
         type: 'asset/resource'
       },
       {
@@ -109,7 +115,6 @@ module.exports = {
       '.css',
       '.scss',
       '.png',
-      '.svg',
       '.jpg'
     ]
   },

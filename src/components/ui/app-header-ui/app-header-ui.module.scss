@@ -1,18 +1,25 @@
 .container {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px black solid;
+}
+
+.companyName {
+    cursor: pointer;
 }
 
 .menuButtons {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
+    align-items: center;
+    margin: 20px;
+    gap: 5px;
 }
 
 .companyLogo {
     width: 50px;
     height: 50px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .button {
@@ -24,5 +31,27 @@
     width: 30px;
     height: 30px;
     margin: 10px;
+    color: white;
     background-color: transparent;
 }
+
+.lightTheme {
+    border-bottom: 1px black solid;
+}
+
+.darkTheme {
+    border-bottom: 1px white solid;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .darkPictogram {
+    color: white;
+  }
+
+  .lightPictogram {
+    color: black;
+  }

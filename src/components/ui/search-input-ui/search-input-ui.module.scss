@@ -1,0 +1,22 @@
+.container {
+    border: none;
+    background-color: transparent;
+    margin: 20px;
+    min-height: 30px;
+    outline: none;
+    box-shadow: none;
+}
+
+.lightTheme {
+    border-color: #000;
+    border: 1px solid #000;
+}
+
+.darkTheme {
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.darkTheme::placeholder {
+    color: white;
+}

@@ -1,25 +1,31 @@
 import { useEffect, useState } from 'react';
-import { THeaderData } from '../../../src/types/types';
 import { AppHeaderUI } from '../ui/app-header-ui/app-header-ui';
-
-const headerData: THeaderData = {
-  theme: false,
-  search: false,
-  favourites: false
-};
+import { useDispatch, useSelector } from '../../../src/services/store';
+import {
+  getSearchField,
+  getTheme,
+  toggleSearchField
+} from '../../../src/services/slices/appSettingsSlice';
+import { useNavigate } from 'react-router-dom';
 
 export const AppHeader = () => {
-  const [searchFlag, setSearchFlag] = useState(headerData.search);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
+  const search = useSelector(getSearchField);
   useEffect(() => {}, []);
   const searchButtonHandler = () => {
-    setSearchFlag((previousValue) => !previousValue);
-    console.log('searchButtonHandler searchFlag: ' + searchFlag);
+    dispatch(toggleSearchField());
   };
-  const goToFavourites = () => {};
-  const goToMainPage = () => {};
+  const goToFavourites = () => {
+    navigate('/favourites');
+  };
+  const goToMainPage = () => {
+    navigate('/');
+  };
   return (
     <AppHeaderUI
-      headerData={headerData}
+      headerData={{ theme: theme, search: search, favourites: false }}
       searchButtonHandler={searchButtonHandler}
       goToFavourites={goToFavourites}
       goToMainPage={goToMainPage}
