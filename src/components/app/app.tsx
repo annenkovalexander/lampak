@@ -50,7 +50,10 @@ const router = createBrowserRouter(
       <Route path='/favourites' element={<FavouritesPage />} />
       <Route path='*' element={<NotFound404 />} />
     </Route>
-  )
+  ),
+  {
+    basename: process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : '/'
+  }
 );
 
 export { router };
