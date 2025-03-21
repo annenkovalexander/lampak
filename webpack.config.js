@@ -96,7 +96,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new Dotenv()
+    new Dotenv(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, './public/images'),
+          to: 'images'
+        }
+      ]
+    })
   ],
   resolve: {
     extensions: [
@@ -115,7 +123,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js',
-    publicPath: process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : '/'
+    publicPath: process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : '/lampak/'
   },
   devServer: {
     static: path.join(__dirname, './dist'),
