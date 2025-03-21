@@ -1,7 +1,10 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
   entry: path.resolve(__dirname, './src/index.tsx'),
@@ -37,8 +40,8 @@ module.exports = {
         test: /\.(png|jpg|jpeg)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/[name][ext]',
-        },
+          filename: 'images/[name][ext][query]'
+        }
       },
       {
         test: /\.(js|jsx)$/,
@@ -58,19 +61,13 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.scss$/,
+        test: /\module\.((c|sa|sc)ss)$/i,
         use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: true,
-              importLoaders: 1
-            }
-          },
-          'sass-loader'
-        ]
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.module\.css$/i,
@@ -86,16 +83,13 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource'
-      },
-      {
         test: /\.(woff|woff2)$/,
         type: 'asset/resource'
       }
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new ESLintPlugin({
       extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),

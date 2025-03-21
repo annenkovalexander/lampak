@@ -4,7 +4,7 @@ import companyLogo from '../../../content/images/favicon.png';
 import { clsx } from 'clsx';
 import { ThemeToggle } from '../../../../src/components/theme-toggle/theme-toggle';
 import SearchPictogram from '../../../content/images/buttons/Search.svg';
-import FavouritesPictogram from '../../../content/images/buttons/Galaxy.svg';
+import FavouritesPictogram from '../../../content/images/buttons/Favourites.svg';
 
 type TAppHeaderUIProps = {
   headerData: THeaderData;

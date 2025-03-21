@@ -19,9 +19,21 @@ import clsx from 'clsx';
 import { useSelector } from '../../services/store';
 import { getTheme } from '../../../src/services/slices/appSettingsSlice';
 import { SearchInput } from '../search-input/search-input';
+import { basename } from 'path';
+import { useEffect } from 'react';
 
 const App = () => {
   const theme = useSelector(getTheme);
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme) {
+      root.style.setProperty('--foreground', '#fff');
+      root.style.setProperty('--background', '#3b3c59');
+    } else {
+      root.style.setProperty('--foreground', '#964b00');
+      root.style.setProperty('--background', '#f5e3c6');
+    }
+  }, [theme]);
   return (
     <div
       className={
@@ -30,9 +42,9 @@ const App = () => {
           : clsx([styles.container, styles.lightTheme])
       }
     >
+      <AppHeader />
+      <SearchInput className={styles.searchInput} />
       <div className={styles.outletContainer}>
-        <AppHeader />
-        <SearchInput />
         <Outlet />
       </div>
       <AppFooter />
@@ -51,9 +63,7 @@ const router = createBrowserRouter(
       <Route path='*' element={<NotFound404 />} />
     </Route>
   ),
-  {
-    basename: process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : '/'
-  }
+  { basename: process.env.NODE_ENV !== 'production' ? '/' : '/lampak/' }
 );
 
 export { router };

@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const initialState = {
-  theme: false,
+  theme: true,
   searchField: true
 };
 

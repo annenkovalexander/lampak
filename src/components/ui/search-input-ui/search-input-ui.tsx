@@ -7,11 +7,14 @@ type TSearchInputUIProps = {
   theme: boolean;
 };
 
-export const SearchInputUI = (props: TSearchInputUIProps) => (
+export const SearchInputUI: React.FC<
+  Partial<HTMLInputElement> & TSearchInputUIProps
+> = ({ className, ...props }) => (
   <>
     {props.searchFlag && (
       <input
         className={clsx([
+          className,
           styles.container,
           props.theme ? styles.darkTheme : styles.lightTheme
         ])}

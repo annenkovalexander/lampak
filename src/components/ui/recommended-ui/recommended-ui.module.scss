@@ -1,0 +1,83 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    container-type: inline-size;
+    container-name: example;
+    margin: 0 20px 0 20px;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.title {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.cardsList {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardItem {
+    list-style: none;
+    justify-self: center;
+}
+
+.cardsList:last-child {
+    margin-bottom: 100px;
+}
+
+@container example (width >= 1000px) {
+    .cardsList {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .title {
+        font-size: 40px;
+    }
+
+    .cardItem {
+        justify-self: left;
+    }
+};
+
+@container example (750px <= width < 1000px) {
+    .cardsList {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .title {
+        font-size: 35px;
+    }
+
+    .cardItem {
+        justify-self: left;
+    }
+};
+
+@container example (450px <= width < 750px) {
+    .cardsList {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .cardItem {
+        justify-self: left;
+    }
+}
+
