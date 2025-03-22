@@ -6,8 +6,9 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 import appSettingsSlice from './slices/appSettingsSlice';
+import searchSlice from './slices/searchSlice';
 
-const rootReducer = combineSlices(appSettingsSlice);
+const rootReducer = combineSlices(appSettingsSlice, searchSlice);
 
 export const store = configureStore({
   reducer: rootReducer,
