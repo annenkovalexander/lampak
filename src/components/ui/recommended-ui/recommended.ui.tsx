@@ -1,5 +1,5 @@
 import { TCardItem } from '../../../../src/types/types';
-import { ProductCardUI } from '../product-card-ui/product-card-ui';
+import { ProductCard } from '../../product-card/product-card';
 import styles from './recommended-ui.module.scss';
 
 type TRecommendedUIProps = {
@@ -14,7 +14,7 @@ export const RecommendedUI = ({ cardsList }: TRecommendedUIProps) => {
       <ul className={styles.cardsList}>
         {cardsList.map((cardItem: TCardItem) => (
           <li key={cardItem.id} className={styles.cardItem}>
-            <ProductCardUI cardItem={cardItem} />
+            <ProductCard cardItem={cardItem} />
           </li>
         ))}
       </ul>

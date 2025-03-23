@@ -1,18 +1,19 @@
-import { TCardItem } from 'src/types/types';
+import { TCardItem, TFavouritesMainUIProps } from '../../../../src/types/types';
 import styles from './favourites-main-ui.module.scss';
 import { ProductCardUI } from '../product-card-ui/product-card-ui';
-
-type TFavouritesMainUIProps = {
-  favouritesCardsList: TCardItem[];
-};
+import { useDispatch } from '../../../../src/services/store';
+import { changeProductLike } from '../../../../src/services/slices/productsInfoSlice';
 
 export const FavouritesMainUI = ({
   favouritesCardsList
 }: TFavouritesMainUIProps) => {
+  const dispatch = useDispatch();
   console.log(
     'FavouritesMainUI favouritesCardsList: ',
     JSON.stringify(favouritesCardsList)
   );
+  const toggleProductLike = (cardItem: TCardItem) => () =>
+    dispatch(changeProductLike(cardItem));
   return (
     <>
       {Array.isArray(favouritesCardsList) && favouritesCardsList.length > 0 && (
@@ -21,7 +22,10 @@ export const FavouritesMainUI = ({
           <ul className={styles.cardsList}>
             {favouritesCardsList.map((cardItem: TCardItem) => (
               <li key={cardItem.id} className={styles.cardItem}>
-                <ProductCardUI cardItem={cardItem} />
+                <ProductCardUI
+                  cardItem={cardItem}
+                  toggleProductLike={toggleProductLike(cardItem)}
+                />
               </li>
             ))}
           </ul>

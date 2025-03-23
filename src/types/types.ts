@@ -24,3 +24,16 @@ export type THeaderData = {
   search: boolean;
   favourites: boolean;
 };
+
+export type TProductCardProps = {
+  cardItem: TCardItem;
+};
+
+export type TProductCardUIProps = {
+  cardItem: TCardItem;
+  toggleProductLike: () => void;
+};
+
+export type TFavouritesMainUIProps = {
+  favouritesCardsList: TCardItem[];
+};

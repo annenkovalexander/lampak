@@ -7,8 +7,13 @@ import {
 } from 'react-redux';
 import appSettingsSlice from './slices/appSettingsSlice';
 import searchSlice from './slices/searchSlice';
+import productsInfoSlice from './slices/productsInfoSlice';
 
-const rootReducer = combineSlices(appSettingsSlice, searchSlice);
+const rootReducer = combineSlices(
+  appSettingsSlice,
+  searchSlice,
+  productsInfoSlice
+);
 
 export const store = configureStore({
   reducer: rootReducer,
