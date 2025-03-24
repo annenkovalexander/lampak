@@ -1,6 +1,7 @@
 import { TCardItem, TProductCardUIProps } from '../../../types/types';
 import FavouritesSVG from '../../../content/images/buttons/Favourites.svg';
 import styles from './product-card-ui.module.scss';
+import clsx from 'clsx';
 
 export const ProductCardUI: React.FC<TProductCardUIProps> = (
   props: TProductCardUIProps
@@ -17,7 +18,10 @@ export const ProductCardUI: React.FC<TProductCardUIProps> = (
           {props.cardItem.productPrice + ' ₽'}
         </h4>
         <FavouritesSVG
-          className={styles.icon}
+          className={clsx(
+            styles.icon,
+            props.cardItem.addToFavouritesFlag ? styles.iconIsFavourite : ''
+          )}
           onClick={props.toggleProductLike}
         />
       </div>
